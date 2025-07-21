@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Битва Контейнеров</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    .container { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; cursor: pointer; }
+    .price { display: none; color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Битва Контейнеров</h1>
+  <p>Нажми на контейнер, чтобы увидеть, что внутри и сколько это стоит!</p>
+  <div id="containers"></div>
+
+  <script>
+    const containers = [
+      { title: "Контейнер 1", story: "Найден в порту в Гамбурге.", items: ["iPhone 13", "Кофемашина"], price: "$850" },
+      { title: "Контейнер 2", story: "Отправлен из Японии.", items: ["PlayStation 5", "Аниме фигурки"], price: "$1200" },
+      { title: "Контейнер 3", story: "Изъят на границе.", items: ["Кроссовки Nike", "Набор инструментов"], price: "$600" }
+    ];
+
+    const containerDiv = document.getElementById("containers");
+
+    containers.forEach((c, i) => {
+      const el = document.createElement("div");
+      el.className = "container";
+      el.innerHTML = `<h3>${c.title}</h3><p>${c.story}</p><p>Содержимое: ${c.items.join(", ")}</p><p class="price">${c.price}</p>`;
+      el.addEventListener("click", () => {
+        el.querySelector(".price").style.display = "block";
+      });
+      containerDiv.appendChild(el);
+    });
+  </script>
+</body>
+</html>
